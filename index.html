@@ -7,53 +7,84 @@
     <style>
         body {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             height: 97vh;
             background-color: #66ccff;
             color: #343a40;
             position: relative;
             overflow: hidden;
         }
-        .container {
-            text-align: center;
-            z-index: 2; 
-            position: relative; 
-            padding: 0 15px; 
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #343a40;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
         }
-
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .container {
+            margin-left: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: calc(100% - 200px);
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            padding: 0 15px;
+        }
         .embed-responsive {
             position: relative;
             overflow: hidden;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%; 
         }
         .embed-responsive iframe {
             position: absolute;
-            top: -10;
-
+            top: 0;
             left: 0;
             width: 100%;
-            height: 97%;
+            height: 100%;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
     </style>
 </head>
 <body>
 
+    <div class="sidebar">
+        <a href="#">metroTV</a>
+        <a href="#">KompasTV</a>
+        <a href="#">TVOne</a>
+        <a href="#">CNN</a>
+    </div>
+
     <div class="container">
         <div class="embed-responsive embed-responsive-16by9">
-              <div class="thumbnail">
-        <img src="thumbnail.png">
-    </div>
-           <iframe id="youtube-video" class="embed-responsive-item" src="https://www.youtube.com/embed/XKueVSGTk2o?autoplay=1&vq=small" 
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen></iframe>
-
+            <div class="thumbnail">
+                <img src="thumbnail.png" alt="Thumbnail">
+            </div>
+            <iframe id="youtube-video" class="embed-responsive-item" src="https://www.youtube.com/embed/XKueVSGTk2o?autoplay=1&vq=small" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
         </div>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
