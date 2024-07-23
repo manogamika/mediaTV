@@ -3,60 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mediaTV</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" rel="stylesheet">
     <style>
         body {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 97vh;
+            height: 100vh;
+            margin: 0;
             background-color: #66ccff;
             color: #343a40;
-            position: relative;
             overflow: hidden;
         }
-        .container {
-            text-align: center;
-            z-index: 2; 
-            position: relative; 
-            padding: 0 15px; 
-        }
-
-        .embed-responsive {
-            position: relative;
-            overflow: hidden;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        }
-        .embed-responsive iframe {
-            position: absolute;
-            top: -10;
-          
-            left: 0;
+        .swiper-container {
             width: 100%;
-            height: 97%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            position: relative;
         }
-
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden; 
+        }
+        .swiper-slide iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .swiper-pagination-bullet {
+            background: #000 !important;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: #000 !important;
+        }
     </style>
 </head>
 <body>
- 
-    <div class="container">
-   
-        <div class="embed-responsive embed-responsive-16by9">
-              <div class="thumbnail">
-        <img src="thumbnail.png">
-    </div>
-            <iframe id="youtube-video" class="embed-responsive-item" src="https://www.youtube.com/embed/XKueVSGTk2o?autoplay=1" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
+  
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <iframe src="https://www.youtube.com/embed/XKueVSGTk2o?autoplay=1" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+            <div class="swiper-slide">
+                <iframe src="https://www.youtube.com/embed/DOOrIxw5xOw?autoplay=1" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+    
         </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 
-    <!-- jQuery and Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper-container', {
+            direction: 'horizontal',
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            touchRatio: 1,
+            touchAngle: 45, 
+            simulateTouch: true 
+        });
+    </script>
 </body>
 </html>
